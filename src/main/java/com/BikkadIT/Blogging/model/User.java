@@ -25,13 +25,8 @@ public class User {
 	@Column(name="user_name",nullable = false)
 	private String name;
 	
-	
 	private String email;
-	
-	
 	private String password;
-	
-	
 	private String about;
 
 }
