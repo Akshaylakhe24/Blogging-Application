@@ -1,7 +1,8 @@
 package com.BikkadIT.Blogging.controller;
 
 import java.util.List;
-import java.util.Map;
+
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -29,14 +30,14 @@ public class UserController {
 	//post-create user
 	
 	@PostMapping("/")
-	public ResponseEntity<UserDto> createUser(@RequestBody UserDto userDto){	
+	public ResponseEntity<UserDto> createUser(@Valid @RequestBody UserDto userDto){	
 		UserDto createrUserDto = this.userServiceI.createrUser(userDto);
 		return new ResponseEntity<>(createrUserDto,HttpStatus.CREATED);
 	}
 	
 	//put -update user
 	@PutMapping("/{userId}")
-	public ResponseEntity<UserDto>updateUser(@RequestBody UserDto userDto,@PathVariable("userId")Integer uid){
+	public ResponseEntity<UserDto>updateUser(@Valid @RequestBody UserDto userDto,@PathVariable("userId")Integer uid){
 		UserDto updatedUser = this.userServiceI.updateUser(userDto, uid);
 		return ResponseEntity.ok(updatedUser);
 	}
